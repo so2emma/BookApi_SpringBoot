@@ -1,10 +1,15 @@
-import './App.css';
+import "./App.css";
+import { useState, useEffect } from "react";
+import api from "./api/AxiosConfig";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className="App">
+      <BrowserRouter>
+        <Routes></Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
