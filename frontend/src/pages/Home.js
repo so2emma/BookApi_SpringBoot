@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import api from "../api/AxiosConfig";
+import BookListing from "../components/BookListing";
 
 const Home = () => {
 // =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -10,6 +11,7 @@ const Home = () => {
   const getBooks = async () => {
     const response = await api.get("/api/books");
     setBooks(response.data);
+    console.log(response.data);
   };
 
   useEffect(() => {
@@ -25,17 +27,17 @@ const Home = () => {
     e.preventDefault();
     try {
       const response = await api.get("/api/books");
-      // const data = ;
-      console.log(data);
+      
    } catch (error) {
       console.error('Error:', error);
    }
   };
 
+
   return (
     <section className="text-white font-normal mt-11">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-        <form onsSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="mt-6 m-3 block">
             <div className="flex justify-center w-full">
               <input
@@ -50,6 +52,10 @@ const Home = () => {
             </div>
           </div>
         </form>
+
+        <div className="m-11">
+          <BookListing Books={books}/>
+        </div>
       </div>
     </section>
   );
