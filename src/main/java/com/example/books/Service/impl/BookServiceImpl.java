@@ -22,26 +22,30 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBookById(Long id) {
+    public List<Book> searchBooks(String query) {
+        return bookRepositories.searchBooksByProperties(query);
+    }
+
+    @Override public Book getBookById(Long id) {
         Optional<Book> optionalBook = bookRepositories.findById(id);
         return optionalBook.orElse(null);
     }
 
     @Override
     public Book addBook(Book book) {
-       Book newBook =  bookRepositories.save(book);
-       return newBook;
+        Book newBook = bookRepositories.save(book);
+        return newBook;
 
     }
 
-@Override
-public Book updateBook(Long id, Book book) {
-   if (!bookRepositories.existsById(id)) {
-       throw new IllegalArgumentException("Book with id " + id + " does not exist");
-   }
-   book.setId(id);
-   return bookRepositories.save(book);
-}
+    @Override
+    public Book updateBook(Long id, Book book) {
+        if (!bookRepositories.existsById(id)) {
+            throw new IllegalArgumentException("Book with id " + id + " does not exist");
+        }
+        book.setId(id);
+        return bookRepositories.save(book);
+    }
 
     @Override
     public void deleteBook(Long id) {

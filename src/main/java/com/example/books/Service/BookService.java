@@ -7,6 +7,8 @@ import com.example.books.model.Book;
 public interface BookService {
     List<Book> getAllBooks();
 
+    List<Book> searchBooks(String query);
+
     Book getBookById(Long id);
 
     Book addBook(Book book);
