@@ -1,0 +1,20 @@
+.search-box {
+  background-color: white;
+  width: 60rem;
+  border-radius: 25px;
+  padding: 10px 20px;
+  line-height: 3rem;
+  color: black;
+}
+.search-box:focus {
+    border: 0;
+    font-weight: 500;
+}
+
+.search-button {
+    line-height: 3rem;
+    background-color: gray;
+    font-weight: 500;
+    padding: 10px;
+    margin: 20px;
+}
