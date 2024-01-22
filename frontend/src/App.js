@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Book from "./pages/Book";
+import AddBook from "./pages/AddBook";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/api/books/:id" element={<Book />} />
+          <Route path="/api/books" element={<AddBook />} />
         </Routes>
       </BrowserRouter>
     </div>

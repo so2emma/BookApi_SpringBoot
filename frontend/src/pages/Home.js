@@ -1,12 +1,11 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import api from "../api/AxiosConfig";
 import BookListing from "../components/BookListing";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState("");
-
 
   const getBooks = async () => {
     const response = await api.get("/api/books");
@@ -17,17 +16,17 @@ const Home = () => {
     getBooks();
   }, []);
 
-
   const handleInputChange = async (e) => {
     setQuery(e.target.value);
     try {
-      const response = await api.get(`/api/books/search?query=${e.target.value}`);
+      const response = await api.get(
+        `/api/books/search?query=${e.target.value}`
+      );
       setBooks(response.data);
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
- };
-
+  };
 
   return (
     <section className="text-white font-normal mt-11">
@@ -46,8 +45,16 @@ const Home = () => {
           </div>
         </form>
 
+        <div className="m-3 flex justify-center">
+          <Link to={"/api/books"}>
+            <button className="bg-green-600 text-white rounded-md block border-emerald-50 p-4">
+              Add new Book
+            </button>
+          </Link>
+        </div>
+
         <div className="m-11">
-          <BookListing Books={books}/>
+          <BookListing Books={books} />
         </div>
       </div>
     </section>
