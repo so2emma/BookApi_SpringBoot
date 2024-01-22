@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import api from "../api/AxiosConfig";
 import { useParams } from "react-router-dom";
 
 const Book = () => {
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(true);
@@ -28,6 +30,20 @@ const Book = () => {
 
     getBook();
   }, [id]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await api.delete(`/api/books/${id}`);
+      console.log(response.data);
+      navigate('/');
+    }
+    catch(err) {
+      console.log(err)
+    }
+
+  }
 
   if (loading) return <div>Loading...</div>; // Or your custom loading component
   if (error) return <div>An error occurred: {error.message}</div>;
@@ -57,7 +73,7 @@ const Book = () => {
           </button>
         </Link>
 
-        <form className="mx-6">
+        <form onSubmit={handleSubmit} className="mx-6">
           <button className="bg-red-700 text-white p-4 rounded-md">
             Delete
           </button>
