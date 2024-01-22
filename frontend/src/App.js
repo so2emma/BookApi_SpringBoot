@@ -4,17 +4,18 @@ import api from "./api/AxiosConfig";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
+import Book from "./pages/Book";
 
 function App() {
-
-
   return (
     <div className="bg-blue-950 h-screen">
       <Nav />
-      <Home />
-      {/* <BrowserRouter>
-        <Routes></Routes>
-      </BrowserRouter> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/book/:id" element={<Book />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
