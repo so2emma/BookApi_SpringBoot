@@ -3,10 +3,10 @@ import api from "../api/AxiosConfig";
 import BookListing from "../components/BookListing";
 
 const Home = () => {
-// =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// getting the book from the initial loading of the page 
 
   const [books, setBooks] = useState([]);
+  const [query, setQuery] = useState("");
+
 
   const getBooks = async () => {
     const response = await api.get("/api/books");
@@ -18,26 +18,22 @@ const Home = () => {
     getBooks();
   }, []);
 
-  // =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  // this is for the search query 
 
-  const [query, setQuery] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleInputChange = async (e) => {
+    setQuery(e.target.value);
     try {
-      const response = await api.get("/api/books");
-      
-   } catch (error) {
+      const response = await api.get(`/api/books/search?query=${e.target.value}`);
+      setBooks(response.data);
+    } catch (error) {
       console.error('Error:', error);
-   }
-  };
+    }
+ };
 
 
   return (
     <section className="text-white font-normal mt-11">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="mt-6 m-3 block">
             <div className="flex justify-center w-full">
               <input
@@ -45,10 +41,8 @@ const Home = () => {
                 type="text"
                 value={query}
                 placeholder="Find Book?"
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={handleInputChange}
               />
-
-              <button className="search-button">Find Book.</button>
             </div>
           </div>
         </form>
