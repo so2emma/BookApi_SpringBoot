@@ -11,7 +11,6 @@ const Home = () => {
   const getBooks = async () => {
     const response = await api.get("/api/books");
     setBooks(response.data);
-    console.log(response.data);
   };
 
   useEffect(() => {

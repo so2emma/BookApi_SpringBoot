@@ -6,13 +6,13 @@ const BookListing = ({ Books }) => {
   return (
     <div>
       {Books?.map((book) => (
-        <a href="">
+        <Link key={book.id} to={`/api/books/${book.id}`}>
           <div key={book.id} className="book-list">
             <p>
               <b>{counter++}. Title:</b> {book.title}
             </p>
           </div>
-        </a>
+        </Link>
       ))}
     </div>
   );

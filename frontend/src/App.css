@@ -33,6 +33,16 @@
   transition:ease-in; 
 }
 
+.single-book{
+  display: block;
+  border: solid 1px white;
+  padding: 40px;
+  border-radius: 40px;
+  background-color: rgb(109, 109, 109);
+  margin: 30px 0;
+  color: white;
+}
+
 .book-list p{
   font-style: italic;
 }
@@ -40,5 +50,10 @@
 .book-list p b{
   font-size: 18px;
   font-style: normal;
+}
+
+.button-group{
+  display: flex;
+  align-items: center
 }
 
