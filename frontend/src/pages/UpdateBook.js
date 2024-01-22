@@ -1,18 +1,31 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../api/AxiosConfig";
 
-const AddBook = () => {
+const UpdateBook = () => {
   const navigate = useNavigate();
+  const {id} = useParams();
 
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publisher, setPublisher] = useState("");
   const [isbn, setIsbn] = useState("");
 
-  const createBook = async (bookData) => {
+  const fetchBook = async () => {
     try {
-      const response = await api.post("/api/books", bookData);
+      const response = await api.get(`/api/books/${id}`); 
+      setTitle(response.data.title);
+      setAuthor(response.data.author);
+      setPublisher(response.data.publisher);
+      setIsbn(response.data.isbn);
+    } catch (error) {
+      console.error(error);
+    }
+ };
+
+  const updateBook = async (bookData) => {
+    try {
+      const response = await api.put(`/api/books/${id}`, bookData);
       console.log(response.data);
       navigate("/");
     } catch (err) {
@@ -22,8 +35,12 @@ const AddBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBook({ title, author, publisher, isbn });
+    updateBook({ title, author, publisher, isbn });
   };
+
+  useEffect(() => {
+    fetchBook();
+ }, []);
 
   return (
     <div>
@@ -78,7 +95,7 @@ const AddBook = () => {
                 </button>
               </Link>
               <button className="bg-green-500 text-white p-4 rounded-md mx-6">
-                New Book
+                Update Book
               </button>
             </div>
           </div>
@@ -88,4 +105,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default UpdateBook;

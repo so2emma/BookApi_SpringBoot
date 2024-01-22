@@ -1,11 +1,10 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import api from "./api/AxiosConfig";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Book from "./pages/Book";
 import AddBook from "./pages/AddBook";
+import UpdateBook from "./pages/UpdateBook";
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/api/books/:id" element={<Book />} />
           <Route path="/api/books" element={<AddBook />} />
+          <Route path="/api/books/update/:id" element={<UpdateBook />} />
         </Routes>
       </BrowserRouter>
     </div>
