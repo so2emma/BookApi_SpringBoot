@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
+  const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
 
   const getBooks = async () => {
@@ -18,12 +19,13 @@ const Home = () => {
 
   const handleInputChange = async (e) => {
     setQuery(e.target.value);
+    setResults([]); 
     try {
       const response = await api.get(
         `/api/books/search?query=${e.target.value}`
       );
-      setBooks(response.data);
-      console.log(books)
+      setResults(response.data);
+      console.log(books);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -48,14 +50,12 @@ const Home = () => {
 
         <div className="m-3 flex justify-center">
           <Link to={"/api/books"}>
-            <button className="green-button">
-              Add new Book
-            </button>
+            <button className="green-button">Add new Book</button>
           </Link>
         </div>
 
         <div className="m-11">
-          <BookListing Books={books} />
+          <BookListing Books={query ? results : books} />
         </div>
       </div>
     </section>
