@@ -40,7 +40,7 @@ const UpdateBook = () => {
 
   useEffect(() => {
     fetchBook();
- }, []);
+ }, [id]);
 
   return (
     <div>

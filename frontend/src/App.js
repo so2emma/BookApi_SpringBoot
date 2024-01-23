@@ -8,7 +8,7 @@ import UpdateBook from "./pages/UpdateBook";
 
 function App() {
   return (
-    <div className="bg-blue-950 h-screen">
+    <div className="">
       <Nav />
       <BrowserRouter>
         <Routes>

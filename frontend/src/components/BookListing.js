@@ -6,9 +6,9 @@ const BookListing = ({ Books }) => {
   return (
     <div>
       {Books?.map((book) => (
-        <div>
+        <div className="book-list flex">
           <Link key={book.id} to={`/api/books/${book.id}`}>
-            <div key={book.id} className="book-list">
+            <div key={book.id} className="">
               <p>
                 <b>{counter++}. Title:</b> {book.title}
               </p>

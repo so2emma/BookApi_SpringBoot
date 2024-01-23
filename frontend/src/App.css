@@ -5,6 +5,9 @@
   padding: 10px 20px;
   line-height: 3rem;
   color: black;
+  border: 2px grey solid;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
 }
 .search-box:focus {
     border: 0;
@@ -12,16 +15,30 @@
 }
 
 .book-list{
-  display: block;
-  border: solid 1px white;
+  /* display: block; */
+  justify-content: space-between;
+  align-items: center;
+  border-top: solid 2px grey;
+  border-bottom: solid 2px grey;
   padding: 40px;
-  border-radius: 40px;
-  background-color: rgb(109, 109, 109);
-  margin: 30px 0
+  color: black;
+  margin: 30px 0;
+  font-size: 1rem;
+
 } 
-.book-list:hover {
-  padding: 50px;
-  transition:ease-in-out 400ms ; 
+
+.book-list p{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.book-list p b{
+  font-size: 18px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.book-list p:hover {
+  font-size: 1.1rem;
+  transition:ease-in 1000ms ; 
+  transition:ease-out 1000ms ; 
 }
 
 .single-book{
@@ -34,14 +51,7 @@
   color: white;
 }
 
-.book-list p{
-  font-style: italic;
-}
 
-.book-list p b{
-  font-size: 18px;
-  font-style: normal;
-}
 
 .button-group{
   display: flex;
@@ -67,5 +77,21 @@
 .input-group label {
   display: block;
   color: white;
+}
+
+/* style for the Nav Link  */
+.navbar{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.navbar h1 {
+  display: block;
+  text-align: center;
+  margin: 0;
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 1.5rem 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
