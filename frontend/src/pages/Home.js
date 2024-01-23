@@ -23,6 +23,7 @@ const Home = () => {
         `/api/books/search?query=${e.target.value}`
       );
       setBooks(response.data);
+      console.log(books)
     } catch (error) {
       console.error("Error:", error);
     }
@@ -47,7 +48,7 @@ const Home = () => {
 
         <div className="m-3 flex justify-center">
           <Link to={"/api/books"}>
-            <button className="bg-green-600 text-white rounded-md block border-emerald-50 p-4">
+            <button className="green-button">
               Add new Book
             </button>
           </Link>

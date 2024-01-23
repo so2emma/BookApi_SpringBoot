@@ -28,61 +28,63 @@ const AddBook = () => {
   return (
     <div>
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="">Name:</label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Enter name of Book"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="">Author:</label>
-            <input
-              type="text"
-              name="author"
-              placeholder="Enter name of Author"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="">Publisher:</label>
-            <input
-              type="text"
-              name="publisher"
-              placeholder="Enter name of Publisher"
-              value={publisher}
-              onChange={(e) => setPublisher(e.target.value)}
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="">ISBN:</label>
-            <input
-              type="text"
-              name="isbn"
-              placeholder="Enter ISBN"
-              value={isbn}
-              onChange={(e) => setIsbn(e.target.value)}
-            />
-          </div>
-
-          <div className="flex justify-center">
-            <div className="button-group">
-              <Link to={"/"}>
-                <button className="bg-cyan-700 text-white p-4 rounded-md">
-                  Go Back
-                </button>
-              </Link>
-              <button className="bg-green-500 text-white p-4 rounded-md mx-6">
-                New Book
-              </button>
+        <div className="form-card">
+          <form onSubmit={handleSubmit}>
+            <div className="input-group">
+              <label htmlFor="">Name:</label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter name of Book"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </div>
-          </div>
-        </form>
+            <div className="input-group">
+              <label htmlFor="">Author:</label>
+              <input
+                type="text"
+                name="author"
+                placeholder="Enter name of Author"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="">Publisher:</label>
+              <input
+                type="text"
+                name="publisher"
+                placeholder="Enter name of Publisher"
+                value={publisher}
+                onChange={(e) => setPublisher(e.target.value)}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="">ISBN:</label>
+              <input
+                type="text"
+                name="isbn"
+                placeholder="Enter ISBN"
+                value={isbn}
+                onChange={(e) => setIsbn(e.target.value)}
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <div className="button-group">
+                <Link to={"/"}>
+                  <button className="bg-cyan-700 text-white p-4 rounded-md">
+                    Go Back
+                  </button>
+                </Link>
+                <button className="bg-green-500 text-white p-4 rounded-md mx-6">
+                  New Book
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

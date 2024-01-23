@@ -17,7 +17,7 @@ const BookListing = ({ Books }) => {
 
           <Link key={book.id} to={`/api/books/update/${book.id}`}>
             <div>
-              <button className="bg-blue-600 text-white p-4 rounded-md">Update Book</button>
+              <button className="bg-green-600 text-white p-4 rounded-md">Update Book</button>
             </div>
           </Link>
         </div>
